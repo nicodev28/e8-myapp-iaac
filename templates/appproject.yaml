@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: e8-nicolas-iaac
+  namespace: mathieu-argo
+spec:
+  description:
+  destinations:
+  - name: in-cluster
+    namespace: mathieu-argo
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/nicodev28/e8-myapp-iaac
+status: {}

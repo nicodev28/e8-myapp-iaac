@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nicolas-app
+  namespace: mathieu-argo
+spec:
+  destination:
+    namespace: nicodev28
+    server: https://kubernetes.default.svc
+  project: e8-nicolas-devprod
+  sources:
+    - helm:
+        valueFiles:
+        - values.yaml
+      path: .
+      repoURL: https://github.com/nicodev28/e8-myapp-envprod
+      targetRevision: HEAD
+    - helm:
+        valueFiles:
+        - values.yaml
+      path: .
+      repoURL: https://github.com/nicodev28/e8-myapp-envdev
+      targetRevision: HEAD
+  syncPolicy:
+    automated: {}
